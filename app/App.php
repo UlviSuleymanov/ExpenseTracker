@@ -52,3 +52,20 @@ function extractTransaction(array $transactionRow):array{
         'amount'=>$amount
     ];
 }
+
+//In This Function we will accept transactions and process total income , total expense and total net accordingly.
+function calculateTotals(array $transactions):array{
+    //we create array with keys as below and set them to 0.
+    $totals = ['netTotal'=>0,'totalIncome'=>0,'totalExpense'=>0];
+    //we loop once to get all transaction and add amount to netTotal either its - or +
+    foreach ($transactions as $transaction){
+        $totals['netTotal'] += $transaction['amount'];
+        //checking transaction if its higher or lower than 0 to add amount accordingly.
+        if($transaction['amount']>=0){
+            $totals['totalIncome'] += $transaction['amount'];
+        }else{
+            $totals['totalExpense'] += $transaction['amount'];
+        }
+    }
+    return $totals;
+}

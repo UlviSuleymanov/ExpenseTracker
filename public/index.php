@@ -19,6 +19,8 @@ foreach ($files as $file){
     //here we merge all transactions from all files(we have only one currently).
     $transactions = array_merge($transactions , getTransactions($file,'extractTransaction'));
 }
+
+$totals = calculateTotals($transactions);
 //we need view (transactions.php) to show it on display(we pass data) so there we can do client side stuff.
 require  VIEWS_PATH . 'transactions.php';
 
