@@ -6,3 +6,6 @@ $isNegative = $amount<0;
 //we handle negative numbers before concatenating it with $ sign and actual format.
 return ($isNegative ? '-':'') . '$' . number_format(abs($amount),2);
 }
+function formatDate(string $date):string{
+    return date('M j, Y',strtotime($date));
+}
